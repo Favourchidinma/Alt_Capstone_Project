@@ -3,7 +3,7 @@ name: capstone_pipeline
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deployment:
