@@ -21,6 +21,32 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-2
 
-      - name: get caller id
-        run: aws sts get-caller-identity
+      - name: install kubectl
+        uses: azure/setup-kubectl@v3
+      
+      - name: install terraform
+        uses: hashicorp/setup-terraform@v3
+      
+      #- name: run terraform init
+       # run: | 
+          cd infrastructure 
+          terraform init
 
+       
+      - name: terraform plan
+        run: |
+          cd infrastructure
+          terraform plan
+
+      - name: apply terraform
+        run: |
+          cd infrastructure
+          terraform apply
+
+      - name: update kubectl credentials
+        run: aws eks update-kubeconfig --name myapp-eks-cluster --region
+
+      - name: deploy cluster
+        run: kubectl apply -f complete-demo.yaml
+     
+    
