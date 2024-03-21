@@ -20,5 +20,6 @@ spec:
                 port:
                   number: 80
   tls:
-  - hosts:
-    - capstone.favourbiz.online
+    - hosts:
+      - capstone.favourbiz.online
+      secretName: secret-tls
