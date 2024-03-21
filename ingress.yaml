@@ -2,6 +2,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   namespace: sock-shop
 spec:
   ingressClassName: nginx
@@ -16,3 +19,6 @@ spec:
                 name: front-end
                 port:
                   number: 80
+tls:
+  - hosts:
+    - capstone.favourbiz.online
