@@ -19,6 +19,6 @@ spec:
                 name: front-end
                 port:
                   number: 80
-tls:
+  tls:
   - hosts:
     - capstone.favourbiz.online
